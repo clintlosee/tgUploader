@@ -1,5 +1,4 @@
 {
-  "alias": ["tg-simple-file-uploader.now.sh"],
   "env": {
     "NODE_ENV": "@tg-uploader-node-env",
     "DATABASE": "@tg-uploader-database",
