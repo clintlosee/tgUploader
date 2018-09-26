@@ -1,3 +1,4 @@
 {
-  "alias": ["tg-simple-file-uploader.now.sh"]
+  "alias": ["tg-simple-file-uploader.now.sh"],
+  "dotenv": "variables.env.now"
 }
