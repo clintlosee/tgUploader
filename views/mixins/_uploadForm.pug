@@ -1,0 +1,7 @@
+mixin uploadForm(upload = {})
+  form(action="/add" method="POST" class="card" enctype="multipart/form-data")
+    //- File Upload
+    label(for="file") File Upload
+    //- input(type="file" name="file" id="file" accept="image/gif, image/png, image/jpeg")
+    input(type="file" name="file" id="file" accept="image/gif, image/png, image/jpeg, .arc1")
+    input(type="submit" value="Save ➡" class="button")

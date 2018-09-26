@@ -1,0 +1,23 @@
+extends layout
+
+include mixins/_uploadForm
+
+block header
+
+block content
+  .inner
+    h2= title
+    +uploadForm()
+
+    //- hr
+
+    if uploads
+      .upload
+        strong Upload URL
+        each upload in uploads
+          p URL: 👉 #{url}uploads/#{upload.file} 👈
+          p: a(href=`http://localhost:9999/uploads/${upload.file}`) #{upload.file}
+          hr
+    else
+      .upload
+        p No files uploaded
