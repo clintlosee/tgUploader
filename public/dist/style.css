@@ -1116,6 +1116,8 @@ label {
   font-family: 'Panama';
   font-weight: 600;
   text-shadow: 0 0 1px #000; }
+  .button:hover {
+    cursor: pointer; }
 
 .avatar {
   min-width: 50px;
