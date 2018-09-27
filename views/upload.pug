@@ -9,15 +9,15 @@ block content
     h2= title
     +uploadForm()
 
-    //- hr
-
     if uploads.length > 0
       .upload
-        strong Upload URL
+        strong #{heading}
         each upload in uploads
-          p URL: 👉 #{url}uploads/#{upload.file} 👈
-          p: a(href=`http://localhost:9999/uploads/${upload.file}`) #{upload.file}
+          p URL: 👉 #{url}/uploads/#{upload.file} 👈
+          p: a(href=`${url}/uploads/${upload.file}`) #{upload.file}
           hr
     else
       .upload
         p No files uploaded
+
+  a(href='/delete' class="delete-hidden") Delete Files

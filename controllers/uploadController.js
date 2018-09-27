@@ -35,8 +35,12 @@ exports.homePage = (req, res) => {
 
 exports.file = async (req, res) => {
   const uploads = await Upload.find()
-  const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`
-  res.render('upload', { title: 'Upload ARC File', url: fullUrl, uploads })
+  const fullUrl = `${req.protocol}://${req.get('host')}`
+  let heading = 'Upload URL'
+  if (uploads.length > 0) {
+    heading = 'Upload URLs'
+  }
+  res.render('upload', { title: 'Upload ARC File', heading, url: fullUrl, uploads })
 }
 
 exports.upload = multer(multerOptions).single('file')
@@ -52,7 +56,7 @@ exports.rework = async (req, res, next) => {
 }
 
 exports.uploadFile = async (req, res) => {
-  const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`
+  const fullUrl = `${req.protocol}://${req.get('host')}`
   const upload = new Upload(req.body)
   await upload.save()
   req.flash('success', `Successfully Uploaded ${upload.file}. URL is ${fullUrl}uploads/${upload.file}`)
