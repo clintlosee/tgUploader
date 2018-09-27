@@ -6,7 +6,11 @@ const uploadSchema = new mongoose.Schema({
   file: {
     type: String
   },
-  slug: String
+  tag: {
+    type: String,
+    default: null
+  },
+  slug: String,
 })
 
 uploadSchema.pre('save', function(next) {

@@ -5,10 +5,14 @@ const uuid = require('uuid')
 const fs = require('fs')
 const path = require('path')
 
-const directory = './public/uploads'
+let directory = './public/uploads'
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
+    const tag = req.body.tag
+    if (tag) {
+      directory = `./public/uploads/${tag}`
+    }
     cb(null, directory)
   },
   filename: function(req, file, cb) {
@@ -56,7 +60,6 @@ exports.rework = async (req, res, next) => {
 }
 
 exports.uploadFile = async (req, res) => {
-  const fullUrl = `${req.protocol}://${req.get('host')}`
   const upload = new Upload(req.body)
   await upload.save()
   req.flash('success', `Successfully uploaded ${upload.file}. See URL below.`)
@@ -70,11 +73,23 @@ exports.deleteFiles = async (req, res) => {
     for (const file of files) {
       if (file === '.gitkeep') {
         continue
+      } else if (file === 'QA' || file === 'Release') {
+        let newDir = path.join(directory, file)
+        fs.readdir(newDir, (err, secondaryFiles) => {
+          for (const newfile of secondaryFiles) {
+            if (newfile === '.gitkeep') {
+              continue
+            }
+            fs.unlink(path.join(newDir, newfile), err => {
+              if (err) throw err;
+            })
+          }
+        })
+      } else {
+        fs.unlink(path.join(directory, file), err => {
+          if (err) throw err;
+        })
       }
-
-      fs.unlink(path.join(directory, file), err => {
-        if (err) throw err;
-      })
     }
   })
   await Upload.remove({})
