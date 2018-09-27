@@ -68,6 +68,11 @@ exports.deleteFiles = async (req, res) => {
     if (err) throw err
 
     for (const file of files) {
+      if (file === '.gitkeep') {
+        console.log('skipped')
+        continue
+      }
+
       fs.unlink(path.join(directory, file), err => {
         if (err) throw err;
       })
