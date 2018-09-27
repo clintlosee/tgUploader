@@ -4,7 +4,8 @@ const slug = require('slugs')
 
 const uploadSchema = new mongoose.Schema({
   file: {
-    type: String
+    type: String,
+    required: [true, 'A file is required to upload.'],
   },
   tag: {
     type: String,
