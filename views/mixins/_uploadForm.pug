@@ -11,6 +11,7 @@ mixin uploadForm(upload = {})
             input(type="checkbox" id="choice" value=choice name="tag")
             label(for=choice) #{choice}
 
+    //- This is a sample input with minimal validation of file types to accept
     //- input(type="file" name="file" id="file" accept="image/gif, image/png, image/jpeg")
     input(type="file" name="file" id="file" accept="image/gif, image/png, image/jpeg, .arc1")
     input(type="submit" value="Save ➡" class="button")
