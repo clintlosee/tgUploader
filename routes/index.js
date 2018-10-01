@@ -12,6 +12,6 @@ router.post('/add',
   catchErrors(uploadController.rework),
   catchErrors(uploadController.uploadFile)
 )
-router.get('/delete', catchErrors(uploadController.deleteFiles))
+router.get('/deletealloftheuploadedfiles', catchErrors(uploadController.deleteFiles))
 
 module.exports = router;

@@ -20,6 +20,24 @@ const storage = multer.diskStorage({
   }
 })
 
+function getDate() {
+  let today = new Date();
+  let dd = today.getDate();
+  let mm = today.getMonth()+1;
+  let yyyy = today.getFullYear();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  let s = today.getSeconds();
+  if(dd<10){
+    dd='0'+dd;
+  }
+  if(mm<10){
+      mm='0'+mm;
+  }
+  today = mm+'/'+dd+'/'+yyyy+' '+h+':'+m+':'+s;
+  return today;
+}
+
 const multerOptions = {
   storage: storage,
   fileFilter(req, file, next) {
@@ -67,6 +85,8 @@ exports.uploadFile = async (req, res) => {
 }
 
 exports.deleteFiles = async (req, res) => {
+  let todayDate = getDate()
+
   fs.readdir(directory, (err, files) => {
     if (err) throw err
 
@@ -92,6 +112,8 @@ exports.deleteFiles = async (req, res) => {
       }
     }
   })
+
+  console.log(`Deleting files ${todayDate}`)
   await Upload.remove({})
   req.flash('success', `Successfully Deleted All Files & Records`)
   res.redirect('/')
