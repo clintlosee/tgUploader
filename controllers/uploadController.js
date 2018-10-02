@@ -4,6 +4,7 @@ const multer = require('multer')
 const uuid = require('uuid')
 const fs = require('fs')
 const path = require('path')
+const dirTree = require('directory-tree')
 
 let directory = './public/uploads'
 
@@ -82,6 +83,13 @@ exports.uploadFile = async (req, res) => {
   await upload.save()
   req.flash('success', `Successfully uploaded ${upload.file}. See URL below.`)
   res.redirect('/')
+}
+
+exports.listFiles = async (req, res) => {
+  const tree = dirTree(directory, (item, path) => {
+    files = item
+  })
+  res.json({ uploads: tree })
 }
 
 exports.deleteFiles = async (req, res) => {
