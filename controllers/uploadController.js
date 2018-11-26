@@ -123,7 +123,7 @@ exports.deleteFiles = async (req, res) => {
   })
 
   console.log(`Deleting files ${todayDate}`)
-  await Upload.remove({})
+  await Upload.deleteMany({})
   req.flash('success', `Successfully Deleted All Files & Records`)
   res.redirect('/')
 }

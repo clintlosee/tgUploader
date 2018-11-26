@@ -13,10 +13,18 @@ require('dotenv').config({ path: 'variables.env' });
 // Connect to our Database and handle any bad connections
 if (process.env.NODE_ENV === 'development') {
   console.log('Connecting to dev DB')
-  mongoose.connect(process.env.DATABASE_DEV); // Dev
+  mongoose.connect(process.env.DATABASE_DEV, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    reconnectTries: Number.MAX_VALUE
+  }); // Dev
 } else {
   console.log('Connecting to prod DB')
-  mongoose.connect(process.env.DATABASE); // Production
+  mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    reconnectTries: Number.MAX_VALUE
+  }); // Production
 }
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 mongoose.connection.on('error', (err) => {
