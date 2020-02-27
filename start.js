@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === 'development') {
   mongoose.connect(process.env.DATABASE_DEV, { useNewUrlParser: true, useUnifiedTopology: true }); // Dev
 } else {
   console.log('Connecting to prod DB')
-  mongoose.connect(process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true }); // Production
+  mongoose.connect(process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true }); // Production stuff
 }
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 mongoose.connection.on('error', (err) => {
