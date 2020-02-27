@@ -12,7 +12,7 @@
       "env": {
         "DATABASE": "@database"
       }
-    },
+    }
   },
   "scripts": {
     "start": "node ./start.js",
