@@ -1,22 +1,7 @@
 {
-  "version": 2,
-  "name": "tguploader",
   "build": {
     "env": {
-      "DATABASE": "@database",
-      "DATABASE_DEV": "mongodb://tgClintLosee1:TGuploader1pass*@ds117423.mlab.com:17423/trugolf-uploader-dev",
+      "DATABASE": "@database"
     }
-  },
-  "builds": [
-    {
-      "src": "start.js",
-      "use": "@now/node-server"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/.*",
-      "dest": "/start.js"
-    }
-  ]
+  }
 }
