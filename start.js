@@ -11,6 +11,7 @@ if (major < 7 || (major === 7 && minor <= 5)) {
 require('dotenv').config({ path: 'variables.env' });
 
 // Connect to our Database and handle any bad connections
+console.log('process.env.NODE_ENV:', process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'development') {
   console.log('Connecting to dev DB')
   mongoose.connect(process.env.DATABASE_DEV, {
