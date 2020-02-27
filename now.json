@@ -3,10 +3,10 @@
   "name": "tguploader",
   "build": {
     "env": {
-      "DATABASE": "@database",
+      "DATABASE": "@database"
     }
   },
-  "builds": [
+  "scripts": [
     {
       "src": "start.js",
       "use": "@now/node-server"
