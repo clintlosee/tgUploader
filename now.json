@@ -17,21 +17,6 @@
       "src": "/.*",
       "dest": "./start.js",
       "methods": ["GET"]
-    },
-    {
-      "src": "/add",
-      "dest": "./start.js",
-      "methods": ["POST"]
-    },
-    {
-      "src": "/admin/deletealloftheuploadedfiles",
-      "dest": "./start.js",
-      "methods": ["GET"]
-    },
-    {
-      "src": "/admin/listuploadfiles",
-      "dest": "./start.js",
-      "methods": ["GET"]
     }
   ]
 }
