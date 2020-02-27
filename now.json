@@ -15,8 +15,7 @@
   "routes": [
     {
       "src": "/.*",
-      "dest": "./start.js",
-      "methods": ["GET"]
+      "dest": "./start.js"
     }
   ]
 }
