@@ -10,8 +10,11 @@ if (major < 7 || (major === 7 && minor <= 5)) {
 // import environmental variables from our variables.env file
 require('dotenv').config({ path: 'variables.env' });
 
+//! Specifically setting to development for Heroku testing
+process.env.NODE_ENV = 'development'
+
+mongoose.set('useCreateIndex', true)
 // Connect to our Database and handle any bad connections
-console.log('process.env.NODE_ENV:', process.env)
 if (process.env.NODE_ENV === 'development') {
   console.log('Connecting to dev DB')
   mongoose.connect(process.env.DATABASE_DEV, { useNewUrlParser: true, useUnifiedTopology: true }); // Dev
