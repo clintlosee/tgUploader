@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Upload = mongoose.model('Upload')
 const multer = require('multer')
-const uuid = require('uuid/v4')
+const uuid = require('uuid')
 const fs = require('fs')
 const path = require('path')
 const dirTree = require('directory-tree')
@@ -17,7 +17,6 @@ const storage = multer.diskStorage({
     cb(null, directory)
   },
   filename: function(req, file, cb) {
-    const uid = uuid().split('-').slice(0, 1).join('');
     cb(null, file.originalname)
   }
 })
@@ -61,7 +60,7 @@ exports.file = async (req, res) => {
   const uploads = await Upload.find()
   const fullUrl = `${req.protocol}://${req.get('host')}`
   let heading = 'Upload URL'
-  if (uploads.length > 1) {
+  if (uploads.length > 0) {
     heading = 'Upload URLs'
   }
   res.render('upload', { title: 'Upload File', heading, url: fullUrl, uploads })
@@ -123,7 +122,7 @@ exports.deleteFiles = async (req, res) => {
   })
 
   console.log(`Deleting files ${todayDate}`)
-  await Upload.deleteMany({})
+  await Upload.remove({})
   req.flash('success', `Successfully Deleted All Files & Records`)
   res.redirect('/')
 }
