@@ -1,16 +1,37 @@
 {
   "version": 2,
   "name": "tguploader",
+  "build": {
+    "env": {
+      "DATABASE": "@database"
+    }
+  },
   "builds": [
     {
-      "src": "start.js",
+      "src": "server.js",
       "use": "@now/node-server"
     }
   ],
   "routes": [
     {
       "src": "/.*",
-      "dest": "/start.js"
+      "dest": "/server.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/add",
+      "dest": "/server.js",
+      "methods": ["POST"]
+    },
+    {
+      "src": "/admin/deletealloftheuploadedfiles",
+      "dest": "/server.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/admin/listuploadfiles",
+      "dest": "/server.js",
+      "methods": ["GET"]
     }
   ]
 }
