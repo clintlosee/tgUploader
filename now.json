@@ -1,16 +1,4 @@
 {
   "version": 1,
   "name": "tguploader",
-  "builds": [
-    {
-      "src": "start.js",
-      "use": "@now/node-server"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/.*",
-      "dest": "/start.js"
-    }
-]
 }
