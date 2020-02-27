@@ -14,10 +14,10 @@ require('dotenv').config({ path: 'variables.env' });
 console.log('process.env.NODE_ENV:', process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'development') {
   console.log('Connecting to dev DB')
-  mongoose.connect(process.env.DATABASE_DEV, { useNewUrlParser: true }); // Dev
+  mongoose.connect(process.env.DATABASE_DEV); // Dev
 } else {
   console.log('Connecting to prod DB')
-  mongoose.connect(process.env.DATABASE, { useNewUrlParser: true }); // Production
+  mongoose.connect(process.env.DATABASE); // Production
 }
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 mongoose.connection.on('error', (err) => {
