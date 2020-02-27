@@ -15,22 +15,22 @@
   "routes": [
     {
       "src": "/.*",
-      "dest": "/start.js",
+      "dest": "./start.js",
       "methods": ["GET"]
     },
     {
       "src": "/add",
-      "dest": "/start.js",
+      "dest": "./start.js",
       "methods": ["POST"]
     },
     {
       "src": "/admin/deletealloftheuploadedfiles",
-      "dest": "/start.js",
+      "dest": "./start.js",
       "methods": ["GET"]
     },
     {
       "src": "/admin/listuploadfiles",
-      "dest": "/start.js",
+      "dest": "./start.js",
       "methods": ["GET"]
     }
   ]
