@@ -3,7 +3,7 @@
   "name": "tguploader",
   "build": {
     "env": {
-      "DATABASE": @database,
+      "DATABASE": "database",
       "DATABASE_DEV": "mongodb://tgClintLosee1:TGuploader1pass*@ds117423.mlab.com:17423/trugolf-uploader-dev",
     }
   },
