@@ -63,7 +63,7 @@ exports.file = async (req, res) => {
   if (uploads.length > 0) {
     heading = 'Upload URLs'
   }
-  res.render('upload', { title: 'Upload File', heading, url: fullUrl, uploads })
+  res.status(200).render('upload', { title: 'Upload File', heading, url: fullUrl, uploads })
 }
 
 exports.upload = multer(multerOptions).single('file')
